@@ -17,3 +17,13 @@ Add it in your root build.gradle at the end of repositories:
   	dependencies {
 	        implementation 'com.github.pratyu-J:DUMMY:1.0.1'
 	}
+
+ ## Implementation
+ 
+ 	String pkg = getPackageName();
+	CheckEnv check = new CheckEnv(pkg, this);
+	check.options(); //If in a virtual environment, it opens a dialog box where you can choose to continue or close the app.
+	//Or 
+	check.decide(); // returns a boolean value, true if the environment is virtual false otherwise. Developers can use the value to tackel it however they want.
+	//Or
+	check.shutDown(); // will close the app automatically if it is running in a virtualized environment.
