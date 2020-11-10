@@ -1,3 +1,4 @@
+[![](https://jitpack.io/v/pratyu-J/DUMMY.svg)](https://jitpack.io/#pratyu-J/DUMMY)
 # Virtualization Environment Detect
 
 Step 1. Add the JitPack repository to your build file
