@@ -1,0 +1,4 @@
+include ':EnvCheckSupport'
+include ':SecurityCheckLib-debug'
+include ':app'
+rootProject.name = "DUMMY"
