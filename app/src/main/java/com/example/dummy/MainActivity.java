@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.mcdoodle.envchecksupport.CheckEnv;
 
 import java.io.File;
 import java.util.regex.Matcher;
@@ -34,10 +35,9 @@ public class MainActivity extends AppCompatActivity  {
 
 
         //THE CODE
-        /*String pkg = getPackageName();
+       // String pkg = getPackageName();
         CheckEnv check = new CheckEnv(pkg, this);
         check.options();
-*/
 
 
 
