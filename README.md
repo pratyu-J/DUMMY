@@ -30,7 +30,7 @@ Add it in your root build.gradle at the end of repositories:
 
  ## Implementation
  
- 	String pkg = "com.xyz.appname";  //full package name //Look for optional section 
+ 	String pkg = "com.example.dummy";  //full package name //Look for optional section 
 	CheckEnv check = new CheckEnv(pkg, this);
 	check.options(); //If in a virtual environment, it opens a dialog box where you can choose to continue or close the app.
 	//Or 
@@ -54,7 +54,7 @@ If the above specified tool doesn't work, use any tool that gives the following 
 
 Input:
 ```
-com.xyz.appname
+com.example.dummy
 ```
 Output: 
 ```
@@ -63,7 +63,7 @@ Y29tLnh5ei5hcHBuYW1l
 
 The Implementation Step will now look like,
 
-	String pkg = "Y29tLnh5ei5hcHBuYW1l";  //Base64 encoded package name
+	String pkg = "Y29tLmV4YW1wbGUuZHVtbXk=";  //Base64 encoded package name
 	CheckEnv check = new CheckEnv(pkg, this);
 	check.options(); //If in a virtual environment, it opens a dialog box where you can choose to continue or close the app.
 	//Or 
