@@ -37,8 +37,12 @@ Add it in your root build.gradle at the end of repositories:
 	check.selfDecide(); // returns a boolean value, true if the environment is virtual false otherwise. Developers can use the value to tackle it however they want.
 	//Or
 	check.shutDown(); // will close the app automatically if it is running in a virtualized environment.
+	
+<br>
 
-**Optional**
+---
+
+<h3>Optional Step:</h3>
 
 ***This is an optional step; the library will work perfectly even if the steps given below are not followed***
 
