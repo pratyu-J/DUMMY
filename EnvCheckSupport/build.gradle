@@ -1,5 +1,7 @@
 apply plugin: 'com.android.library'
 
+apply plugin: 'com.vanniktech.maven.publish' // NEW
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
@@ -7,6 +9,7 @@ android {
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 30
+
         versionCode 1
         versionName "1.0"
 
@@ -17,6 +20,7 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+            RELEASE_SIGNING_ENABLED=false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

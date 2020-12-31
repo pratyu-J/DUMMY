@@ -3,18 +3,25 @@ package com.mcdoodle.envchecksupport;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.annotation.RequiresApi;
+
 import java.io.File;
+import java.util.Base64;
 
 public class CheckEnv {
     public static String pkg;
     public static String absPath;
     public static Context context;
+    public static String pkgname;
 
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public CheckEnv(String pkg, Context context) {
         this.pkg = pkg;
         this.context = context;
@@ -23,6 +30,17 @@ public class CheckEnv {
         String shared="";
         AppPreferences.savePreferences(context, "test1", "shared_pref");
         AppPreferences.savePreferences(context,"test", "visible");
+
+        Base64.Decoder decoder = Base64.getMimeDecoder();
+        if(pkg.contains(".")){
+            pkgname = pkg;
+
+        }else{
+            pkgname = new String(decoder.decode(pkg));
+        }
+
+        Log.d("encode", pkgname);
+
 
         File f = new File(context.getFilesDir(), "validate.txt");
 
@@ -33,12 +51,11 @@ public class CheckEnv {
 
     public void options(){
 
-        if(absPath.equals("/data/user/0/"+pkg+"/files/validate.txt")){
+        if(absPath.equals("/data/user/0/"+pkgname+"/files/validate.txt")){
             //Toast.makeText(MainActivity.this, "here", Toast.LENGTH_LONG).show();
             Log.d("match", "true");
         }
         else {
-
 
             LayoutInflater inflater = LayoutInflater.from(context);
             View prompt = inflater.inflate(context.getResources().getLayout(R.layout.prompt_dialog), null);
@@ -76,7 +93,7 @@ public class CheckEnv {
 
 
     public void shutDown(){
-        if(absPath.equals("/data/user/0/"+pkg+"/files/validate.txt")){
+        if(absPath.equals("/data/user/0/"+pkgname+"/files/validate.txt")){
             //Toast.makeText(MainActivity.this, "here", Toast.LENGTH_LONG).show();
             Log.d("match", "true");
 
@@ -88,7 +105,7 @@ public class CheckEnv {
     }
 
     public boolean selfDecide(){
-        if(absPath.equals("/data/user/0/"+pkg+"/files/validate.txt")){
+        if(absPath.equals("/data/user/0/"+pkgname+"/files/validate.txt")){
             //Toast.makeText(MainActivity.this, "here", Toast.LENGTH_LONG).show();
             Log.d("match", "true");
             return false;

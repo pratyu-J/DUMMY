@@ -1,7 +1,9 @@
 package com.example.VirtualEnvironmentDetect;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
@@ -10,17 +12,26 @@ import android.widget.TextView;
 import com.mcdoodle.envchecksupport.CheckEnv;
 
 import java.io.File;
+import java.util.Base64;
+
+import static com.mcdoodle.envchecksupport.CheckEnv.absPath;
 
 public class MainActivity extends AppCompatActivity  {
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         TextView tv = findViewById(R.id.tv2);
-        String pkg = getPackageName();
+
+        //String pkg = "com.example.dummy";   //convert the package name to base 64 format and store it in variable pkg
+
+        String pkg = "Y29tLmV4YW1wbGUuZHVtbXk=";    //this is base 64 encode of the above package
+
         Log.d("PACKAGE", pkg);
+        Log.d("from function", getPackageName());
         String shared="";
         AppPreferences.savePreferences(this, "test1", "shared_pref");
         AppPreferences.savePreferences(this,"test", "visible");
@@ -31,7 +42,9 @@ public class MainActivity extends AppCompatActivity  {
         CheckEnv check = new CheckEnv(pkg, this);
         check.options();
 
+        Log.d("location", absPath);
 
+        tv.setText(absPath);
 
         /*File root = new File("/data/data/"+pkg+"/shared_prefs");
         if (root.isDirectory()) {
